@@ -1,0 +1,24 @@
+{
+  "reviewers": [
+    "@slapierre"
+  ],
+  "baseBranches": [
+    "main"
+  ],
+  "dependencyDashboard": true,
+  "extends": [
+    "config:base"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "prConcurrentLimit": 2,
+  "prHourlyLimit": 0,
+  "semanticCommits": "enabled",
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": [
+      "security"
+    ]
+  }
+}

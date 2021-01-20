@@ -1,0 +1,20 @@
+load("@npm//@bazel/typescript:index.bzl", "ts_library")
+
+package(default_visibility = ["//visibility:public"])
+
+ts_library(
+    name = "core",
+    srcs = glob(
+        include = ["**/*.ts"],
+        exclude = ["**/*.test.ts"],
+    ),
+    module_name = "@hello/core",
+    module_root = "src/index.d.ts",
+    deps = [
+        "@npm//@types/lodash",
+        "@npm//@types/node",
+        "@npm//@types/yargs",
+        "@npm//lodash",
+        "@npm//yargs",
+    ],
+)

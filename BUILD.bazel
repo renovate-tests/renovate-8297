@@ -1,0 +1,49 @@
+load("@rules_python//python:defs.bzl", "py_runtime", "py_runtime_pair")
+load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
+
+package(default_visibility = ["//visibility:public"])
+
+py_runtime(
+    name = "python3_runtime",
+    files = ["@python_interpreter//:files"],
+    interpreter = "@python_interpreter//:python_bin",
+    python_version = "PY3",
+    visibility = ["//visibility:public"],
+)
+
+py_runtime_pair(
+    name = "python_py_runtime_pair",
+    py2_runtime = None,
+    py3_runtime = ":python3_runtime",
+)
+
+toolchain(
+    name = "python_py_toolchain",
+    toolchain = ":python_py_runtime_pair",
+    toolchain_type = "@bazel_tools//tools/python:toolchain_type",
+)
+
+buildifier(
+    name = "buildifier",
+    exclude_patterns = ["./node_modules/*"],
+    lint_mode = "fix",
+    mode = "fix",
+    verbose = True,
+)
+
+buildifier(
+    name = "buildifier-check",
+    exclude_patterns = ["./node_modules/*"],
+    lint_mode = "warn",
+    mode = "check",
+    verbose = True,
+)
+
+exports_files(
+    [
+        "tsconfig.json",
+        "jest.config.js",
+        "jest-reporter.js",
+    ],
+    visibility = ["//visibility:public"],
+)

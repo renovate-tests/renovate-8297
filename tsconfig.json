@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "baseUrl": "",
+    "rootDirs": [
+      ".",
+      "./bazel-out/darwin-fastbuild/bin/",
+      "./bazel-out/k8-fastbuild/bin/",
+      "./bazel-out/x64_windows-fastbuild/bin/",
+      "./bazel-out/darwin-dbg/bin/",
+      "./bazel-out/k8-dbg/bin/",
+      "./bazel-out/x64_windows-dbg/bin/"
+    ],
+    "paths": {
+      "@hello/cli": [
+        "./packages/typescript/hello/cli/lib/idex"
+      ],
+      "@hello/core": [
+        "./packages/typescript/hello/core/src/index"
+      ],
+
+    },
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "lib": [
+      "es6"
+    ],
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "strict": true
+  },
+  "exclude": [
+    "bazel-out/**/*",
+    "dist/**/*",
+    "**/node_modules/**/*"
+  ]
+}

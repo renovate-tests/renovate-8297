@@ -1,0 +1,9 @@
+__pycache__
+dist
+bazel-out
+node_modules
+.mypy_cache
+.venv
+*.log
+**/.vscode/settings.json
+**/.vscode/launch.json

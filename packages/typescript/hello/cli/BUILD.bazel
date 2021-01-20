@@ -1,0 +1,33 @@
+load("@npm//@bazel/typescript:index.bzl", "ts_library")
+load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+ts_library(
+    name = "cli",
+    srcs = ["lib/index.ts"],
+    data = glob(
+        include = [
+            "bin/**/*",
+            "*.json",
+            "*.md",
+        ],
+    ),
+    module_name = "@hello/cli",
+    module_root = "lib/index.d.ts",
+    deps = [
+        "//packages/typescript/hello/core",
+        "@npm//@types/yargs",
+        "@npm//yargs",
+    ],
+)
+
+nodejs_binary(
+    name = "bin",
+    data = [
+        ":cli",
+        "//packages/typescript/hello/core",
+        "@npm//yargs",
+    ],
+    entry_point = "lib/index.ts",
+)

@@ -147,3 +147,43 @@ http_archive(
     strip_prefix = "buildtools-master",
     url = "https://github.com/bazelbuild/buildtools/archive/master.zip",
 )
+
+################################################################################
+# Docker Support
+################################################################################
+
+http_archive(
+    name = "io_bazel_rules_docker",
+    sha256 = "1698624e878b0607052ae6131aa216d45ebb63871ec497f26c67455b34119c80",
+    strip_prefix = "rules_docker-0.15.0",
+    urls = ["https://github.com/bazelbuild/rules_docker/releases/download/v0.15.0/rules_docker-v0.15.0.tar.gz"],
+)
+
+load("@io_bazel_rules_docker//repositories:repositories.bzl", container_repositories = "repositories")
+
+container_repositories()
+
+load("@io_bazel_rules_docker//repositories:deps.bzl", container_deps = "deps")
+
+container_deps()
+
+load("@io_bazel_rules_docker//nodejs:image.bzl", _nodejs_image_repos = "repositories")
+load("@io_bazel_rules_docker//python3:image.bzl", _py_image_repos = "repositories")
+
+_nodejs_image_repos()
+
+_py_image_repos()
+
+################################################################################
+# Docker Image: Python 3.7.9
+################################################################################
+
+load("@io_bazel_rules_docker//container:container.bzl", "container_pull")
+
+container_pull(
+    name = "python_3.7.9_slim_buster",
+    digest = "sha256:05d4caed5b6ced951dc43c4f46f13daca790d4d2081eae5824a1459226d651e7",
+    registry = "index.docker.io",
+    repository = "python",
+    # tag = "3.7.9-slim-buster",
+)

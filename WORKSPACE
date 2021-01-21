@@ -185,5 +185,5 @@ container_pull(
     digest = "sha256:05d4caed5b6ced951dc43c4f46f13daca790d4d2081eae5824a1459226d651e7",
     registry = "index.docker.io",
     repository = "python",
-    tag = "3.7.9-slim-buster",
+    # tag = "3.7.9-slim-buster",
 )

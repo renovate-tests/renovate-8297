@@ -51,9 +51,9 @@ http_archive(
 
 http_archive(
     name = "com_sonia_rules_poetry",
-    sha256 = "8a7a6a5d2ef859ba4309929f3b4d61031f2a4bfed6f450f04ab09443246a4b5c",
-    strip_prefix = "rules_poetry-ecd0d9c66b89403667304b11da3bd99764797a63",
-    urls = ["https://github.com/soniaai/rules_poetry/archive/ecd0d9c66b89403667304b11da3bd99764797a63.tar.gz"],
+    sha256 = "519353ce6d82ef3fe292b775687ddf4e14a5abb4befd33019a9748de0286eb9c",
+    strip_prefix = "rules_poetry-d6e2ac1f5281ecd193b2f8e23c29e414d1c347b4",
+    urls = ["https://github.com/soniaai/rules_poetry/archive/d6e2ac1f5281ecd193b2f8e23c29e414d1c347b4.tar.gz"],
 )
 
 load("@com_sonia_rules_poetry//rules_poetry:defs.bzl", "poetry_deps")

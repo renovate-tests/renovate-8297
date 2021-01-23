@@ -182,7 +182,7 @@ load("@io_bazel_rules_docker//container:container.bzl", "container_pull")
 
 container_pull(
     name = "python_3.7.9_slim_buster",
-    digest = "sha256:05d4caed5b6ced951dc43c4f46f13daca790d4d2081eae5824a1459226d651e7",
+    digest = "sha256:64a8d50a55ff2bc22d1f476f134549fb3775cee73d0457930e7f3d3ec8a4aa3f",
     registry = "index.docker.io",
     repository = "python",
     # tag = "3.7.9-slim-buster",
